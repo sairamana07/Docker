@@ -1,0 +1,28 @@
+MONOLITHIC: in monolithic we use single sever and single db for multiple services
+MICRO SERVICE: in micro service we use multiple servers and multiple dbs for multiple services
+                ( we have to choose the architecture based on aplication and its services)
+
+In micro services we do not use servers, we use containers.
+CONTAINER: container is virtual machine without having OS
+DOCKER: it is a tool used to create a container, and the container uses IMAGE which is having os&packages already installed(pre built).
+                            SERVER = VM = CONTAINER
+                                      
+DOCKER:
+      it is a open source entralized platform designed to create, deploy and run the application
+      docker is written in GO language
+      docker creates containers on host os to run application
+      we can install docker in any os but docker engine runs natively on linux distributions.
+      It allows applications to use the same Linux kernel as a system on the host computer, rather than creating a whole virtual O.S.
+      Before Docker performs O.S level Virtualization also known as Containerization. process of packing application along with its dependencies.
+      It was initially released in March 2013, and developed by Solomon Hykes and Sebastian Pahl.
+      Docker is a set of platform-as-a-service that use O.S level Virtualization, where as VM ware uses Hardware level Virtualization.
+      Container have O.S files but its negligible in size compared to original files of that O.S.
+COMPONANTS:
+       CLIENT: It takes the commands and executes with communication docker daemon
+       HOST: The place where you installed docker.
+       DAEMON: Deals with docker componets(images, containers, volumes ----). it is inside docker host.
+       REGISTRY: It stores all the Images.
+
+
+      
+
