@@ -1,0 +1,22 @@
+JENKINS SETUP:
+         step1:
+         sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo =======> jenkins repo from jenkins.io
+         sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key =========> jenkins key
+         
+         step2:
+         INSTALLING JAVA-11 (SUPPORTS 11 OR 17)
+         amazon-linux-extras install java-openjdk11 -y
+         java -version
+          
+          step3:
+          INSTALLING GIT, MAVEN & JENKINS
+          yum install git maven jenkins -y
+          
+          step4:
+          RESTARTING JENKINS
+          sytemctl start jenkins.service
+          sytemctl status jenkins.service
+          conneting to jenkins dashboard pubilc ip:8080
+          
+
+        
