@@ -22,7 +22,61 @@ COMPONANTS:
        HOST: The place where you installed docker.
        DAEMON: Deals with docker componets(images, containers, volumes ----). it is inside docker host.
        REGISTRY: It stores all the Images.
+       =================================================================================================
+WORKING WITH DOCKER:
+       installation:
+       yum install docker -y
+       systemctl restart or start docker.service
+       sytemctl status docker.service
+       docker --version
+ DOCKER COMMANDS:
+ 
+       docker pull ubuntu     --> to get ubuntu image form rigistry, i.e., we are getting ubuntu os image from rigistry to work
+       docker images          --> to see the all images 
+       docker run ubuntu       ---> to create container. but here we did not given cnt name so its takes a default name with ubuntu image
+       docker run --name sairamana ubutu 
+                               --> creating cnt with name and with ubuntu os image, but not entering into container
+       docker run -it --sairamana2 ubuntu  
+                                --> creating ctn with name and with ubuntu os image and entering into cnt.
+                                -it --> interactive terminal
+       docker ps -a             --> to check all containers
+       docker ps                --> to check all active containers
+       docker start saiamana    --> to start stopped container
+       docker attach sairamana2 --> to go into a perticular container
+       
+ Inside a container:
+       apt update -y                --> in ubuntu package manager is "apt" (advance paackage tool)
+       apt install maven -y         --> install maven in sairamana2 cnt with os image ubuntu
+       apt install mysql-server -y  --> creating mysql server in sairamana2 cnt   """""""'
+       mkdir sai                    --> creating sai directory in sairamana2 cnt  """"""""
+       touch sai/file.txt           --> creating file.txt in sai directory in sairamana2 container """""
+       ( so now all above things are done in sairamana2 cnt with ubuntu os image)
+        ctrl pq                       --> to exti from container.
+       docekr commit sairamana2 image:v1 --> to creating a os image from sairamana2 container and whatever the informatin of sairamana2 container 
+                                             will be available in "image:v1" image
+       ctrl pq
+       docker run -it --name sairamana4 image:v1 --> creating new container sairamana4 with os image "image:v1". and all the files and services
+                                                     and etc are present in sairamana2 container will be available in sairamana4 container too
+                                                     because we have taken the os image from sairamana2 cnt by comminting image:v1
+                                                     (i.e., sai directory, file.txt, maven will have in sairamama4 container also)
+        =======================================================================================================================
+   
+DOCKER FILE:
+          > It is an automated method to create docker images.
+          > in docker file D must be captial.
+          > in single folder we need to have only one docker file.
+          > docker file will have some componets inside it.
+          > each component is on CAPITAL letter.
 
-
+                                             
+                                             
+                          
+                          
+                          
+                          
+                          
+                                             
+      
+       
       
 
