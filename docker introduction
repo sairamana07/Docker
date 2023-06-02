@@ -89,9 +89,9 @@ DOCKER FILE:
 
 ======================================================================================================
 Day 03 01-06-2023
-
-VOLUMES: 
--> By default when we create a volume the data will also going t store in the local host
+                                                                                                      [some impartant facts:
+VOLUMES:                                                                                                     ctrl pq-> to come out from container by not stopping cnt.
+-> By default when we create a volume the data will also going t store in the local host                      
 
 PART1(CONTAINER TO CONTAINER VOLUME CREATION):
        1. vim Dockerfile--> FROM ubuntu
@@ -115,17 +115,52 @@ PART1(CONTAINER TO CONTAINER VOLUME CREATION):
         3. from commands (volume mounting)
            docker volume create volume3
            docker inspect volume3
-           cd /var/lib/docker/volumes/raham1/_data
+           cd /var/lib/docker/volumes/volume4/_data
            touch file{4.6}
+           docker run -it --name container4 --mount source=volume4,destination=/volume4 ubuntu
+          
+PART2(CONTAINER TO LOCAL)
+           -> container cannot copy the files so
+            docker volume ls 
+            docker inspect volume4
+            cd /var/lib/docker/volumes/volume4/_data
+            cp * -r /root/
+            
+PART3(LOCAL TO CONTAINER)
+           1. by using docker file method
+           2. cd /home/ec2-user/
+              touhc file{1..5}
+              docker run -it --name container7 -v /home/ec2-user:/volume5 ubuntu
+              cd volume5
+              ls
+              file1.....file5
+              touch file{6..10}
+              ctrl pq 
+              -> now we can have file1....file10 in our root directory .ie., where we have created first five files.
+              
+              
+ DOCKER SYSTEM COMMANDS:( to show the memory utiligation of docker componants such as image, container. volumes .etc..)
+              docker info
+              docker system df (it gives all the info of images, cnts, volumes)
+              docker system prune --all ( it will delete the -all stopped containers
+                                                             -all networks not used by atleast one container
+                                                             -all images without at least one container associated to them
+                                                             -all buil catch 
+                                                             - it asks confirmation first inorder to delete these all info
+              docker system prune --force ( it will not ask confirmation to delete all the above info)
+              docker system prune --volumes (to delete unused volumes)
+
+ 
+ 
 JENKINS INSTALLATION IN CONTAINER:
 
-yum install docker -y
-systemctl start docker 
-systemctl status docker
-docker run -itd --name jenkins -p 8080:8080 jenkins/jenkins:lts
-docker logs jenkins ---> to see the password of jenkins
-
-in local hsot create one webapplication file i.e, index.html
+yum install docker -y                                                                             NOTE: 1. TO START CONTAINER WHIHC IS IN STOPPED BY 
+systemctl start docker                                                                                     docker start container name
+systemctl status docker                                                                                    docker stop container name
+docker run -itd --name jenkins -p 8080:8080 jenkins/jenkins:lts                                          2. WE CAN NOT BRING THEM BACK SOME CONTAINERS WHICH ARE IN 
+docker logs jenkins ---> to see the password of jenkins                                                     STOPPED STATE.
+                                                                                                         3. TO DELETE A CONTAINER WE NEED STOP THAT CONTAINER FIRST 
+in local hsot create one webapplication file i.e, index.html                                                AFTER THAT WE CAN USE "docker rm cnt1 cnt2"  etc..
 vim Dockerfile--> FROM ubuntu
                   RUN apt update -y
                   RUN apt install apache2 -y
@@ -133,7 +168,7 @@ vim Dockerfile--> FROM ubuntu
                   CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
 docker build -t image:v1 .
 docker run -itd --name appcontainer -p 89:80 image:v1
--------------> now open host public ip:89 port than the web application we can see on browser
+-------------> now open host public ip:89 port than the web application we can see on browser.
 
                                              
                           
