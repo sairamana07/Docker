@@ -23,6 +23,8 @@ COMPONANTS:
        DAEMON: Deals with docker componets(images, containers, volumes ----). it is inside docker host.
        REGISTRY: It stores all the Images.
        =================================================================================================
+DAY02 31-05-2023:
+
 WORKING WITH DOCKER:
        installation:
        yum install docker -y
