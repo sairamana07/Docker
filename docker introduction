@@ -156,7 +156,7 @@ PART3(LOCAL TO CONTAINER)
  
 JENKINS INSTALLATION IN CONTAINER:
 
-yum install docker -y                                                                             NOTE: 1. TO START CONTAINER WHIHC IS IN STOPPED BY 
+yum install docker -y                                                                             NOTE: 1. TO START CONTAINER WHEN ITS BEING IN STOP MODE 
 systemctl start docker                                                                                     docker start container name
 systemctl status docker                                                                                    docker stop container name
 docker run -itd --name jenkins -p 8080:8080 jenkins/jenkins:lts                                          2. WE CAN NOT BRING THEM BACK SOME CONTAINERS WHICH ARE IN 
@@ -171,6 +171,66 @@ vim Dockerfile--> FROM ubuntu
 docker build -t image:v1 .
 docker run -itd --name appcontainer -p 89:80 image:v1
 -------------> now open host public ip:89 port than the web application we can see on browser.
+
+TASK: install three webapplications in three different servers by using docker.
+***********************************************************************************************************************************************************************
+DAY04 02-06-2023
+
+DOCKER-COMPOSE:  it is a tool on a docker to create multiple containers in a single time
+COMPOSE FILE: it is a yml file which work on keypair value,
+              in this we will give all the informantion of containers such as images, volumes, ports, networks, .etc.,
+WORK FLOW: in image we will be having Dockerfile, index.html
+           by using yml file we create container and than in this continer we will get the indexfile by using apache server.
+                         ==========================================================================================  
+ PROCESS OF DEPLOYING FOUR SERVICES OF WEB-APPLICATION IN A SINGLE SERVER USING DOCKER-COMPOSE METHOD             
+Process of deploying four service of web application in a single server using docker-compose method:
+          (paytm which having four services such as movie tickets, train tickets, dth service and mobile recharge)
+          
+          sudo -i
+          yum install docker -y
+          systemctl start docker
+          systemctl status docker
+          sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          ls /usr/local/bin/
+          sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose version
+          create sample index.html in host
+          vim Dockerfile --> FROM ubuntu
+                             RUN apt update -y
+                             RUN apt install apache2 -y
+                             COPY index.html /var/www/html                               --> COPY command will exicute at the time of image creation 
+                             CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]            --> CMD command will exicute at the time of conatiner creation
+          docker build -t movies:v1 .                              --> its creates an image with indext.html , apache server  and all which are present in Dockerfile.
+          docker images                                             --> we will have movies:v1 image in list now.
+          vim docker-compose.yml -->version: '3'
+                                    services:
+                                      movies:
+                                        image: movies:v1
+                                        ports: 
+                                          - "8000:80"             --------> here 8000 is contaner port, 80 is image port(it is fixed port number for port)
+                                         volumes:
+                                           - "moviesvolume"
+          docker-compose up -d                    ------->by exicuting this command we will create contaner and deploy movies service in webapplication server  
+                                                         and we can access public ip of server with 8000 port which we have given in docker-compose.yml
+                                                         i.e., public ip:8000
+  again  docker build -t trains:v1 .               -------> creating image for trains services from base Dockerfile
+         change source code in index.html accordingly
+         add new image,port,volume, in services of docker-compose.yml file
+         docker-compose up -d                   -----------> creating new container for train service and to deploy train service in that webapplication
+                                                             i.e., public ip:8001                       
+  again docker build -t mobile:v1              -------> creating image for mobile services from base Dockerfile     
+         change source code in index.html accordingly
+         add new image,port,volume, in services of docker-compose.yml file
+         docker-compose up -d                   -----------> creating new container for mobile service and to deploy train service in that webapplication
+                                                              i.e., public ip:8002
+   again docker build -t dth:v1              -------> creating image for dth services from base Dockerfile     
+         change source code in index.html accordingly
+         add new image,port,volume, in services of docker-compose.yml file
+         docker-compose up -d                   -----------> creating new container for dth service and to deploy train service in that webapplication
+                                                               i.e., public ip:8003
+                     ************************************************************************************************
+          
 
                                              
                           
