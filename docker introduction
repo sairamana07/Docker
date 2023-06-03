@@ -22,7 +22,8 @@ COMPONANTS:
        HOST: The place where you installed docker.
        DAEMON: Deals with docker componets(images, containers, volumes ----). it is inside docker host.
        REGISTRY: It stores all the Images.
-       =================================================================================================
+**********************************************************************************************************************************************************************
+**********************************************************************************************************************************************************************
 DAY02 31-05-2023:
 
 WORKING WITH DOCKER:
@@ -61,7 +62,7 @@ WORKING WITH DOCKER:
                                                      and etc are present in sairamana2 container will be available in sairamana4 container too
                                                      because we have taken the os image from sairamana2 cnt by comminting image:v1
                                                      (i.e., sai directory, file.txt, maven will have in sairamama4 container also)
-        =======================================================================================================================
+        ...............................................................................................................................................
    
 DOCKER FILE:
           > It is an automated method to create docker images.
@@ -89,7 +90,8 @@ DOCKER FILE:
 
 
 
-======================================================================================================
+*********************************************************************************************************************************************************************
+*********************************************************************************************************************************************************************
 Day 03 01-06-2023
                                                                                                       [some impartant facts:
 VOLUMES:                                                                                                     ctrl pq-> to come out from container by not stopping cnt.
@@ -174,6 +176,7 @@ docker run -itd --name appcontainer -p 89:80 image:v1
 
 TASK: install three webapplications in three different servers by using docker.
 ***********************************************************************************************************************************************************************
+***********************************************************************************************************************************************************************
 DAY04 02-06-2023
 
 DOCKER-COMPOSE:  it is a tool on a docker to create multiple containers in a single time
@@ -181,7 +184,8 @@ COMPOSE FILE: it is a yml file which work on keypair value,
               in this we will give all the informantion of containers such as images, volumes, ports, networks, .etc.,
 WORK FLOW: in image we will be having Dockerfile, index.html
            by using yml file we create container and than in this continer we will get the indexfile by using apache server.
-                         ==========================================================================================  
+                         .................................................................................
+                         
  PROCESS OF DEPLOYING FOUR SERVICES OF WEB-APPLICATION IN A SINGLE SERVER USING DOCKER-COMPOSE METHOD             
 Process of deploying four service of web application in a single server using docker-compose method:
           (paytm which having four services such as movie tickets, train tickets, dth service and mobile recharge)
@@ -229,9 +233,34 @@ Process of deploying four service of web application in a single server using do
          add new image,port,volume, in services of docker-compose.yml file
          docker-compose up -d                   -----------> creating new container for dth service and to deploy train service in that webapplication
                                                                i.e., public ip:8003
-                     ************************************************************************************************
+                     ..................................................................................................................
           
-
+DOCKER COMMANDS:
+        docker ps --> will lists all running containers in docker engine
+        docker-compose ps --> lits all containers related to images declared in a docker compose file.
+        docker-compose stop --> to stop contaner from running state
+        docker-compose start --> to start stopping state to start state
+        docker-compose pause -->
+        docker-compose unpause
+        docker-compose down  --->(stop--> delete)
+        docker-compose up -d --> to create container from docker-compose.yml file
+        docker-compose top -->  provides information about the CPU, memory, and swap usage if you run it inside a Docker container
+        docker-compose images --> 
+        docker-compose logs --> Displays log output from services
+        .....................................................................
+        
+DOCKER NETWORKS:
+       docker networks are used to communicate between multiple containers which are running on same or different docker host.
+       we have different types of docker networks.
+       1. bridge network -->  It is a default network that container will communicate with each other within the same host
+       2. host network -->  When you Want your container IP and ec2 instance IP same then you use host network
+       3. none network --> When you don’t Want The container to get exposed to the world, we use none network.
+                           It will not provide any network to our container.
+       4. overlay network --> Used to communicate containers with each other across the multiple docker hosts.
+                  .............................................................
+                 
+        docker network create network_name --> to create network name
+        
                                              
                           
                           
