@@ -261,6 +261,40 @@ DOCKER NETWORKS:
                  
         docker network create network_name --> to create network name
         
+        
+        
+===============================================================================================================================================
+===============================================================================================================================================
+DAY05, 05-06-2023.
+
+DOCKER SWARM: 
+             to maintain multiple replicas of our web allication we usee the docker swarm concept to protect application from nautral calalmities.
+             
+    SWARM: it is used to manage contaiers on multiple servers.
+    MASTER: it is used to create and distribute the containers.
+    WORKER: it is used to store containers.
+    CLUSTER: group of servers 
+    REPLICA: copy of a container.
+    
+    NOTE:  to work with docker swarm we need enable docker engine first.
+    
+    CLUSTER MAKING:
+         1. create 3 serevers(1 master, worker1, worker2)
+         2. set hostnames to 3 servers as above ( systemctl set-hostname master/worker1/worker2) and sudo -i
+         3. install docker in 3 servers and start docker service ( yum install docker -y, systemctl start docker)
+         4.setup cluster ( MASTER--> TOKEN--> COPY IN 2 WORKNODES). ie.,
+              
+              --> docker swarm init --advertise-addr 172.31.87.191 ( this is private ip of master)
+                 after hittin enter we get one line of token and that full line is need to be paste in two worknodes and hit enter than the two 
+                 workers will be added into the cluster.
+           
+           --> docker ls                  ---> to list the nodes in cluster.
+              now we need create container/service by using n
+           
+              
+      
+          
+        
                                              
                           
                           
