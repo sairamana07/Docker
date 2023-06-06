@@ -285,6 +285,9 @@ DOCKER SWARM:
          4.setup cluster ( MASTER--> TOKEN--> COPY IN 2 WORKNODES). ie.,
               
               --> docker swarm init --advertise-addr 172.31.87.191 ( this is private ip of master)
+              
+             docker swarm join --token SWMTKN-1-0jc84xty4ydhyrp66mhkjr529xtzgew0eajyfadu21m47b675p-86gezlsls2ox1ze9inwui41l5 172.31.40.122:2377
+
                  after hittin enter we get one line of token and that full line is need to be paste in two worknodes and hit enter than the two 
                  workers will be added into the cluster.
            
