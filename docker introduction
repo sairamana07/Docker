@@ -345,11 +345,7 @@ DOCKER HUB: it is used to store our images in central and each image has to  sav
                sairamanan07 --> docker hub username
                paytm        --> repository name in docker hub
         4. docker login     --> give docker hub  username and password.
-        5. docker push sairamana07/paytm --> pushinig image into docker hub.
-               
-
-        
-           
+        5. docker push sairamana07/paytm --> pushinig image into docker hub.      
          
    HYSTORY:
     1  yum install docker -y
@@ -381,6 +377,11 @@ DOCKER HUB: it is used to store our images in central and each image has to  sav
    27  docker service paytm ps
    28  docker service ps paytm
    29  docker service scale paytm=3
+***********************************************************************************************************************************************
+***********************************************************************************************************************************************
+DAY 06, 06-06-2023.
+
+MICRO SERVICES PROJECT BY COMPLETE AUTOMATION PROCESS:
 
 
               
