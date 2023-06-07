@@ -333,7 +333,23 @@ SERVICE SCALLING:
          
 NOTE:  when we create service using docker service and if try to delete again it will create that same service automatically.
        but in normal method service creation i.e., by docker run it wont be happen in that the service/containere deleted if we delete them.
+         ......................................................................................................
          
+         
+DOCKER HUB: it is used to store our images in central and each image has to  save in a individual repository in central.
+        1. create image
+        2. create repo in docker hub 
+        3. --> docker tag mobile:v1 sairamana07/paytm   --> to add our image to docker hub
+           here,
+               mobile:v1    --> image name
+               sairamanan07 --> docker hub username
+               paytm        --> repository name in docker hub
+        4. docker login     --> give docker hub  username and password.
+        5. docker push sairamana07/paytm --> pushinig image into docker hub.
+               
+
+        
+           
          
    HYSTORY:
     1  yum install docker -y
