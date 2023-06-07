@@ -314,13 +314,59 @@ DOCKER SWARM:
           -->  docker service create --name dth --publish 82:80 --replicas 3 sairamana07/dth:latest           --> to creating dth service
           -->  docker service create --name mobile --publish 83:80 --replicas 3 sairamana07/mobile:latest     --> mobile service
           -->  docker service create --name recharge --publish 82:80 --replicas 3 sairamana07/recharge:latest --> recharge service
+          
+SERVICE SCALLING:
+         if we want increase the replicas of an existing service then we use scalling command i.e,
+         --> docker service scale mobile=10
+             if we want again decrease than we can give lower number of scale.
+         
+         if we want update the service with new version than we can update service(image version) as follows,
+         --> docker service update --image sairamana07/movies2:latest movies
+               .................................................................................
+               
+         if we want go to the previous version of webapplication than
+         --> docker service rollback paytm    --> it will take back to the previous version of application.
+         
+         --> docker service ps paytm          --> it will show the paytm application services only
+         --> docker service inspect paytm     --> To get the complet info of service
+         --> docker service ls 
+         
+NOTE:  when we create service using docker service and if try to delete again it will create that same service automatically.
+       but in normal method service creation i.e., by docker run it wont be happen in that the service/containere deleted if we delete them.
+         
+         
+   HYSTORY:
+    1  yum install docker -y
+    2  service docker start
+    3  service docker status
+    4  docker swarm init --advertise-addr 172.31.87.191
+    5  docker node ls
+    6  docker ps -a
+    7  docker run -itd --name cont1 rahamshaik/paytmmsmovies:latest
+    8  docker ps -a
+    9  docker stop 5b22923a6a1e
+   10  docker rm 5b22923a6a1e
+   11  docker ps -a
+   12  docker service create --name paytm -p 80:80 --replicas 3 rahamshaik/paytmmsmovies:latest
+   13  docker ps
+   14  docker service create --name paytm --publish 81:80 --replicas 3 rahamshaik/paytmmsmovies:latest
+   15  docker service ls
+   16  docker stop 1xiwvb7dqmb4
+   17  docker service rm 1xiwvb7dqmb4
+   18  docker service ls
+   19  docker service create --name paytm --publish 81:80 --replicas 3 rahamshaik/paytmmsmovies:latest
+   20  docker ps
+   21  docker service ls
+   22  docker service scale paytm=6
+   23  docker service ls
+   24  docker ps
+   25  docker service scale paytm=10
+   26  docker service ls
+   27  docker service paytm ps
+   28  docker service ps paytm
+   29  docker service scale paytm=3
 
 
-     
-              
-              
- ============================================================================================================================================
- ==========================================================================================================================================
               
            
               
