@@ -291,8 +291,32 @@ DOCKER SWARM:
                  after hittin enter we get one line of token and that full line is need to be paste in two worknodes and hit enter than the two 
                  workers will be added into the cluster.
            
-           --> docker ls                  ---> to list the nodes in cluster.
-              now we need create container/service by using n
+           --> docker node ls                  --->in master we can check list of the  nodes that are connected in cluster.
+           
+             now we need to create services in cluster. and for this purpose we need to create images for respected services or insted of this 
+              we can directly use the images that we have in docker hub. so,
+              
+           --> docker service create --name movies --publish 81:80 --replicas 3 sairamana07/movies:latest
+               here,
+               movies                    --> is the repository name in docker hub
+               publish                   --> is to allocate port number and 81 is allocating 
+                                             container port number to movies service and 80 is image portnumber.
+               replicas                  --> defining how many replicas that we need create for a service
+               sairamana07/movies:latest --> this is directly copied from docker hub movies repository, and it will get when we click on 
+                                             movies repository latest one 
+               now if want to chek the movies service created or not in cluster we can by using below command 
+               
+          --> docker ps /docker ps -a
+               and now we can access movies service in browser with public ip of anycluster number with port 81 which we have assigned for 
+               movies service i.e, 
+               16.16.170.77:81  --> it will give the webapplication of movies service.
+               
+          -->  docker service create --name dth --publish 82:80 --replicas 3 sairamana07/dth:latest           --> to creating dth service
+          -->  docker service create --name mobile --publish 83:80 --replicas 3 sairamana07/mobile:latest     --> mobile service
+          -->  docker service create --name recharge --publish 82:80 --replicas 3 sairamana07/recharge:latest --> recharge service
+
+
+     
               
               
  ============================================================================================================================================
