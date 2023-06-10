@@ -41,6 +41,7 @@ WORKING WITH DOCKER:
                                --> creating cnt with name and with ubuntu os image, but not entering into container
        docker run -it --sairamana2 ubuntu  
                                 --> creating ctn with name and with ubuntu os image and entering into cnt.
+       docker run -itd --sairamana2 ubuntu --> it create cnt and not goning inside the container                         
                                 -it --> interactive terminal
        docker ps -a             --> to check all containers
        docker ps                --> to check all active containers
